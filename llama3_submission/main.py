@@ -122,9 +122,7 @@ async def tokenize(input_data: TokenizeRequest) -> TokenizeResponse:
 
 @app.post("/decode")
 async def decode(input_data: DecodeRequest) -> DecodeResponse:
-    # logger.info("Using device: {}".format(fabric.device)) # won't use due to not using fabric
     t0 = time.perf_counter()
-    decoded = tokenizer.decode(torch.Tensor(input_data.tokens))
-    # decoded = tokenizer.processor.decode(input_data.tokens)
+    decoded = tokenizer.decode(input_data.tokens)
     t = time.perf_counter() - t0
     return DecodeResponse(text=decoded, request_time=t)
