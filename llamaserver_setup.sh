@@ -4,7 +4,7 @@ export TRANSFORMERS_CACHE=/workspace/model_cache
 export HF_HOME=/workspace/model_cache
 
 pip install -r llama3_submission/fast_api_requirements.txt
-pip install transformers accelerate datasets
+pip install transformers accelerate datasets peft
 huggingface-cli login --token $HUGGINGFACE_TOKEN
 
 cd llama3_submission

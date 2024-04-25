@@ -35,13 +35,21 @@ model = LlamaForCausalLM.from_pretrained(
     torch_dtype=torch.float16,
     device_map="cuda"
     )
-# model = load_peft_model(model, os.environ["HUGGINGFACE_REPO"])
+
+try:
+    HUGGINGFACE_REPO = os.environ["HUGGINGFACE_REPO"]
+except Exception as e:
+    print(e)
+    
+if HUGGINGFACE_REPO:
+    print("loading huggingface adapter repo: {}".format(HUGGINGFACE_REPO))
+    model.load_adapter(HUGGINGFACE_REPO)
 
 model.eval()
 
 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Meta-Llama-3-8B')
 
-LLAMA3_CONTEXT_LENGTH = 4096
+LLAMA3_CONTEXT_LENGTH = 8192
 
 
 @app.post("/process")
