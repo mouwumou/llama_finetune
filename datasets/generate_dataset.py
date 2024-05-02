@@ -234,5 +234,5 @@ print(len(result_dataset))
 
 random.shuffle(result_dataset)
 result_dataset = random.sample(result_dataset,int(len(result_dataset)*0.67))
-jdump(result_dataset,'../LLaMA-Effcient-Tuning/data_for_fintune/nips_data_add_v7.json')
+jdump(result_dataset,'./generated_datasets.json')
 print(len(result_dataset))

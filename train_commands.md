@@ -102,6 +102,9 @@ apt-get install git-lfs
 
 ```
 
+```bash
+git reset --soft HEAD^
+```
 
 
 ```json
